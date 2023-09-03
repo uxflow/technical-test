@@ -1,22 +1,26 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from "./components/Navbar";
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Flow',
-  description: 'FlowLab marketplace',
-}
+  title: "Flow",
+  description: "FlowLab marketplace",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} debug-screens`}>
+        <Navbar />
+        {children}
+      </body>
     </html>
-  )
+  );
 }
