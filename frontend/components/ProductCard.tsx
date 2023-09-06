@@ -1,0 +1,47 @@
+"use client";
+import Image from "next/image";
+import React from "react";
+import { ProductProps } from "@/types";
+import Link from "next/link";
+import { CustomButtom } from ".";
+
+export default function ProductCard(props: ProductProps) {
+  const formatedPrice = (props.price / 100).toFixed(2).replace(".", ",");
+  const formatedPriceForCreditCard = (props.price / 5 / 100)
+    .toFixed(2)
+    .replace(".", ",");
+  function addToCart() {
+    console.log("add item to cart");
+  }
+  return (
+    <div className="h-[658px] w-[309px] flex flex-col justify-between items-center">
+      <Link href={`/product/${props.id}`}>
+        <div className="h-[450px] sm:w-[309px] xl:w-[309px] rounded-xl relative">
+          <Image
+            alt={props.name}
+            src={props.image}
+            fill
+            sizes="100vw"
+            loading="lazy"
+            style={{ objectFit: "cover", borderRadius: "8px" }}
+          />
+        </div>
+        <div className="flex flex-col items-center justify-between">
+          <div className="flex flex-col items-center pt-[10px] gap-[8px]">
+            <p className="descriptionCard">{props.name}</p>
+            <p className="priceCard">R$ {formatedPrice}</p>
+            <p className="descriptionCard">
+              5x de R$ {formatedPriceForCreditCard} s/juros
+            </p>
+          </div>
+        </div>
+      </Link>
+
+      <CustomButtom
+        title="Adicionar ao carrinho"
+        handleClick={addToCart}
+        containerStyles="text-primary_color w-[205px] h-[48px] bg-secundary_color rounded-[4px]"
+      />
+    </div>
+  );
+}

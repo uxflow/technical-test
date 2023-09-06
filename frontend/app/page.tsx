@@ -1,13 +1,14 @@
 import Image from "next/image";
-
+import ProductCard from "../components/ProductCard";
+import { Products } from "@/constants";
 export default function Home() {
   return (
     <main>
-      <div className="flex justify-center m-auto max-w-[1440px]">
+      <div className="container">
         <div className="w-1/2 bg-orange-500 h-80 font">
-          <p className="pl-[104px] pr-[197px] py-[96px] text-[48px] font-semibold text-white font-poppins">
+          <h1 className="pl-[104px] pr-[197px] py-[96px] text-[48px] font-semibold text-white font-poppins">
             Estilo e conforto para os seus pés
-          </p>
+          </h1>
         </div>
         <div className="relative w-1/2 overflow-hidden h-80">
           <Image
@@ -18,6 +19,17 @@ export default function Home() {
             style={{ objectFit: "cover" }}
           />
         </div>
+      </div>
+      <div className="flex gap-[48px] justify-center mt-[48px]">
+        {Products.map((el) => (
+          <ProductCard
+            name={el.name}
+            id={el.id}
+            key={el.id}
+            image={el.image}
+            price={el.price}
+          />
+        ))}
       </div>
     </main>
   );
