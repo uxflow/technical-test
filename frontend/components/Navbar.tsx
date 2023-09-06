@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/logo.svg";
 import logotipo from "../public/tipo_logo.svg";
-import user from "../public/icons/user.svg";
+import user from "../public/icons/User.svg";
 import cart from "../public/icons/ShoppingBagOpen.svg";
 export default function Navbar() {
   return (
