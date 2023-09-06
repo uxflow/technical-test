@@ -12,7 +12,7 @@ const config: Config = {
       },
       colors: {
         primary_color: "#FF7600",
-        secundary_color: "#FF76001A"
+        secondary_color: "#FF76001A"
       },
     },
   },

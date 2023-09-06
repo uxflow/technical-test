@@ -7,6 +7,10 @@ import SecundaryImage from "../components/SecundaryImage";
 import PaymentMethod from "../components/PaymentMethod";
 import CustomButton from "@/components/CustomButton";
 
+function ButtonOscar({ title }: any) {
+  return <button>{title}</button>;
+}
+
 export default function ProductPage({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
   const product = Products[id];
@@ -22,7 +26,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
             <div className="flex flex-col gap-[24px]">
               {product.secundary_images.map((el, i) => (
                 <SecundaryImage
-                  key={product.secundary_images[i]}
+                  key={i}
                   image={product.secundary_images[i]}
                 />
               ))}
@@ -62,6 +66,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 textStyles="text-white"
                 handleClick={buttonClick}
               />
+              <ButtonOscar title="Clica em mim BB" />
             </div>
           </div>
         </div>

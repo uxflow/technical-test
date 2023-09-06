@@ -6,8 +6,8 @@ import Link from "next/link";
 import { CustomButtom } from ".";
 
 export default function ProductCard(props: ProductProps) {
-  const formatedPrice = (props.price / 100).toFixed(2).replace(".", ",");
-  const formatedPriceForCreditCard = (props.price / 5 / 100)
+  const formattedPrice = (props.price / 100).toFixed(2).replace(".", ",");
+  const formattedPriceForCreditCard = (props.price / 5 / 100)
     .toFixed(2)
     .replace(".", ",");
   function addToCart() {
@@ -29,9 +29,9 @@ export default function ProductCard(props: ProductProps) {
         <div className="flex flex-col items-center justify-between">
           <div className="flex flex-col items-center pt-[10px] gap-[8px]">
             <p className="descriptionCard">{props.name}</p>
-            <p className="priceCard">R$ {formatedPrice}</p>
+            <p className="priceCard">R$ {formattedPrice}</p>
             <p className="descriptionCard">
-              5x de R$ {formatedPriceForCreditCard} s/juros
+              5x de R$ {formattedPriceForCreditCard} s/juros
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function ProductCard(props: ProductProps) {
       <CustomButtom
         title="Adicionar ao carrinho"
         handleClick={addToCart}
-        containerStyles="text-primary_color w-[205px] h-[48px] bg-secundary_color rounded-[4px]"
+        containerStyles="text-primary_color w-[205px] h-[48px] bg-secondary_color rounded-[4px]"
       />
     </div>
   );
