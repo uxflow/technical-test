@@ -44,3 +44,29 @@ O protótipo é navegável, através dele você conseguirá ver todo o fluxo.
 - Alcance dos objetivos propostos.
 - Adaptação mobile (layout responsivo).
 - Componentização e extensibilidade dos componentes React.
+
+
+### Como executar:
+Aqui está um deploy para mostrar a aplicação funcionando.
+<br>
+https://flowlab-technical-test.vercel.app/
+- Primeiro, vá para a pasta do frontend:
+
+```bash
+cd frontend
+```
+- installe as dependências e rode o aplicativo
+
+```bash
+npm install
+npm run dev
+```
+
+- Abra [http://localhost:3000](http://localhost:3000) com seu browser para ver o resultado..
+
+
+## Informações adicionais
+
+- Infelizmente não consegui concluí o que foi pedido por falta de tempo.
+- Teve uma falta de energia na minha região e demorei um pouco pra me situar com o NextJS e com o tailwindcss, se eu tivesse mais um ou dois dias eu teria feito o projeto como solicitado.
+- Agradeço pela oportunidade de ter essa experiência de toda forma.
