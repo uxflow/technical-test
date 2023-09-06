@@ -20,7 +20,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex gap-[48px] justify-center mt-[48px] flex-wrap">
+      <div className="flex gap-[48px] justify-center mt-[48px] mb-[48px]  flex-wrap">
         {Products.map((el) => (
           <ProductCard
             name={el.name}
