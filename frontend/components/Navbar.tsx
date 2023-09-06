@@ -17,13 +17,13 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="flex items-center w-[189px] justify-between">
-          <Link href={"/cart"}>
+          <Link href={"/"}>
             <div className="flex items-center gap-3">
               <Image src={cart} height={16} alt="cart" />
               <span>Carrinho</span>
             </div>
           </Link>
-          <Link href={"/user"}>
+          <Link href={"/"}>
             <div className="flex items-center gap-3">
               <Image src={user} height={16} alt="cart" />
               <span>Entrar</span>
