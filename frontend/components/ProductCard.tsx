@@ -16,7 +16,7 @@ export default function ProductCard(props: ProductProps) {
   return (
     <div className="h-[658px] w-[309px] flex flex-col justify-between items-center">
       <Link href={`/product/${props.id}`}>
-        <div className="h-[450px] sm:w-[309px] xl:w-[309px] rounded-xl relative">
+        <div className="h-[450px] w-[309px] xl:w-[309px] rounded-xl relative">
           <Image
             alt={props.name}
             src={props.image}

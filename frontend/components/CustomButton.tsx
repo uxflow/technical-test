@@ -12,7 +12,7 @@ const Button = ({
 }: CustomButtonProps) => (
   <button
     disabled={isDisabled}
-    type={btnType || "button"}
+    type={btnType ?? "button"}
     className={`custom-btn ${containerStyles}`}
     onClick={handleClick}
   >

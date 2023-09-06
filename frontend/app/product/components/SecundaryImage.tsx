@@ -4,7 +4,7 @@ import React from "react";
 
 export default function SecundaryImage(props: SecundaryImageProps) {
   return (
-    <div className="w-[105px] h-[99.75px] relative">
+    <div className="sm:w-[105px] w-16 h-16 sm:h-[99.75px] relative">
       <Image
         src={props.image}
         alt="Imagem de tênis"

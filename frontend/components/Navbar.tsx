@@ -6,8 +6,8 @@ import user from "../public/icons/user.svg";
 import cart from "../public/icons/ShoppingBagOpen.svg";
 export default function Navbar() {
   return (
-    <nav className="flex h-[70px] w-screen  justify-center border-b-2 border-gray-100">
-      <div className=" py-[20px] px-[104px] w-[1440px] flex justify-between text-gray-500">
+    <nav className="flex h-[70px] justify-center border-b-2 border-gray-100">
+      <div className=" py-[20px] px-[20px] sm:px-[104px] w-[1440px] flex justify-between text-gray-500">
         <div className="flex">
           <Link href={"/"}>
             <div className="flex items-center gap-[7px]">

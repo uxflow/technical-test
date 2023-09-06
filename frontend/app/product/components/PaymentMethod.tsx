@@ -13,7 +13,7 @@ export default function PaymentMethod(props: PaymentMethodProps) {
   }
 
   return (
-    <div className="w-[158px] h-[136px] flex flex-col justify-between">
+    <div className="w-[155px] sm:w-[158px] h-[136px] flex flex-col justify-between">
       <Image src={props.image} alt="pix logo" />
       <span className=" mt-[16px] text-gray-400 text-[14px]">
         {props.discount ? (
@@ -24,10 +24,10 @@ export default function PaymentMethod(props: PaymentMethodProps) {
           <div>Ou em</div>
         )}
       </span>
-      <div className="text-black font-semibold text-[32px] flex-nowrap font-poppins">
+      <div className="text-black font-semibold text-xl sm:text-[32px] flex-nowrap font-poppins">
         R$ {fixedPrice}
       </div>
-      <span className="text-gray-400 text-[14px]">
+      <span className="text-gray-400 text-[12px]  sm:text-[14px] ">
         {props.discount ? (
           <>
             no pix <span className="text-primary_color">10%</span> de desconto

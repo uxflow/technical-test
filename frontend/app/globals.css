@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 .container {
-    @apply flex justify-center m-auto max-w-[1440px] mt-[48px]
+    @apply sm:flex justify-center m-auto 2xl:max-w-[1440px]
 }
 
 .priceCard {
