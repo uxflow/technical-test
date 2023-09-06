@@ -13,7 +13,7 @@ export default function PaymentMethod(props: PaymentMethodProps) {
   }
 
   return (
-    <div className="w-[155px] sm:w-[158px] h-[136px] flex flex-col justify-between">
+    <div className=" sm:w-[158px] px-4 sm:px-0 h-[136px] flex flex-col justify-between">
       <Image src={props.image} alt="pix logo" />
       <span className=" mt-[16px] text-gray-400 text-[14px]">
         {props.discount ? (

@@ -44,7 +44,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   price={product.price}
                   discount={true}
                 />
-                <div className="border h-[80px] "></div>
+                <div className="hidden sm:flex border h-[80px] "></div>
                 <PaymentMethod
                   image={card}
                   price={product.price}
