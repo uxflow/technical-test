@@ -10,6 +10,10 @@ const config: Config = {
       fontFamily: {
         poppins: "'Poppins', sans-serif",
       },
+      colors: {
+        primary_color: "#FF7600",
+        secundary_color: "#FF76001A"
+      },
     },
   },
   plugins: [require("tailwindcss-debug-screens")],
