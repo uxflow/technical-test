@@ -20,6 +20,21 @@ Ferramentas utilizadas
 - Typescript
 - ESLint
 - Tailwindcss
+- Lucide Icons
+
+### Componentes.
+
+- [ x ] Input
+- [ x ] Button
+- [ ] Header
+- [ ] Product
+- [ ] Dialog
+
+### Paginas.
+
+- [ ] Home
+- [ ] Product
+- [ ] Cart
 
 ### Instruções.
 
