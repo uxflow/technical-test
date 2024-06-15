@@ -24,8 +24,8 @@ Ferramentas utilizadas
 
 ### Componentes.
 
-- [ x ] Input
-- [ x ] Button
+- [x] Input
+- [x] Button
 - [ ] Header
 - [ ] Product
 - [ ] Dialog
