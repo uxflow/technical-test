@@ -20,6 +20,8 @@ export default function Home() {
   const [listProduct, setListProduct] = useState<ProductProps[]>([]);
 
   const [title, setTitle] = useState('')
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(500);
 
   useEffect(() => {
     async function getProducts() {
@@ -50,9 +52,15 @@ export default function Home() {
 
 
   const filteredProductsAll = listProduct.filter(product =>
-
+    product.price >= priceMin &&
+    product.price <= priceMax &&
     product.title.toLowerCase().includes(title.toLowerCase())
   );
+
+  const handleGetMinMax = (min: number, max: number) => {
+    setPriceMin(min)
+    setPriceMax(max)
+  }
 
   const getRandomCategory = (): string => {
     const categories = ['Botas', 'Chinelos', 'Chuteiras', 'Sandálias', 'Tênis'];
@@ -119,15 +127,17 @@ export default function Home() {
               <MultiRangeSlider
                 min={0}
                 max={500}
-                onChange={() => { }}
+                onChange={({ priceMin, priceMax }: { priceMin: number; priceMax: number }) =>
+                  handleGetMinMax(priceMin, priceMax)
+                }
               />
               <div className="flex gap-4">
                 <p className="w-full bg-gray-300 rounded-t-lg py-2 pl-4 text-sm">Minimo</p>
                 <p className="w-full bg-gray-300 rounded-t-lg py-2 pl-4 text-sm">Maximo</p>
               </div>
               <div className="flex gap-4">
-                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ 0</p>
-                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ 500</p>
+                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ {priceMin}</p>
+                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ {priceMax}</p>
               </div>
             </div>
           </div>
