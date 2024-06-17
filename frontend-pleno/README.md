@@ -26,13 +26,15 @@ Ferramentas utilizadas
 
 - [x] Input
 - [x] Button
-- [ ] Header
+- [x] Header
+- [x] Checkbox
+- [x] MultiRange
 - [ ] Product
 - [ ] Dialog
 
 ### Paginas.
 
-- [ ] Home
+- [x] Home
 - [ ] Product
 - [ ] Cart
 
