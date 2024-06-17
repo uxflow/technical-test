@@ -22,6 +22,13 @@ export default function Home() {
   const [title, setTitle] = useState('')
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(500);
+  const [checkboxes, setCheckboxes] = useState([
+    { label: 'Botas', checked: false },
+    { label: 'Chinelos', checked: false },
+    { label: 'Chuteiras', checked: false },
+    { label: 'Sandálias', checked: false },
+    { label: 'Tênis', checked: false },
+  ]);
 
   useEffect(() => {
     async function getProducts() {
@@ -50,6 +57,19 @@ export default function Home() {
     getProducts();
   }, []);
 
+  const handleCheckboxChange = (index: number) => {
+    const updatedCheckboxes = [...checkboxes];
+
+    updatedCheckboxes[index].checked = !updatedCheckboxes[index].checked;
+    setCheckboxes(updatedCheckboxes);
+  };
+
+  const filteredProductsCategory = listProduct.filter(product =>
+    checkboxes.some(checkbox => checkbox.checked && checkbox.label === product.category) &&
+    product.price >= priceMin &&
+    product.price <= priceMax &&
+    product.title.toLowerCase().includes(title.toLowerCase())
+  );
 
   const filteredProductsAll = listProduct.filter(product =>
     product.price >= priceMin &&
@@ -57,9 +77,9 @@ export default function Home() {
     product.title.toLowerCase().includes(title.toLowerCase())
   );
 
-  const handleGetMinMax = (min: number, max: number) => {
-    setPriceMin(min)
-    setPriceMax(max)
+  const handleGetMinMax = (priceMin: number, priceMax: number) => {
+    setPriceMin(priceMin)
+    setPriceMax(priceMax)
   }
 
   const getRandomCategory = (): string => {
@@ -115,11 +135,14 @@ export default function Home() {
               />
 
               <nav className="flex flex-col gap-2 mt-2">
-                <Checkbox
-                  label="test"
-                  checked={true}
-                  onChange={() => { }}
-                />
+                {checkboxes.map((checkbox, index) => (
+                  <Checkbox
+                    key={index}
+                    label={checkbox.label}
+                    checked={checkbox.checked}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                ))}
               </nav>
             </div>
             <div className="bg-gray-200 w-72 p-4 rounded-lg">
@@ -127,8 +150,8 @@ export default function Home() {
               <MultiRangeSlider
                 min={0}
                 max={500}
-                onChange={({ priceMin, priceMax }: { priceMin: number; priceMax: number }) =>
-                  handleGetMinMax(priceMin, priceMax)
+                onChange={({ min, max }: { min: number; max: number }) =>
+                  handleGetMinMax(min, max)
                 }
               />
               <div className="flex gap-4">
@@ -144,7 +167,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:ml-4 m-4 mx-auto">
             {
-              filteredProductsAll.map((product) => (
+              (filteredProductsCategory.length > 0
+                ? filteredProductsCategory
+                : filteredProductsAll
+              ).map((product) => (
                 <ListProduct
                   key={product.id}
                   title={product.title}
