@@ -10,6 +10,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Flow Lab Tech",
   description: "Teste Técnico - Desenvolvedor Frontend Pleno",
+  icons: "/logo.svg"
 };
 
 export default function RootLayout({

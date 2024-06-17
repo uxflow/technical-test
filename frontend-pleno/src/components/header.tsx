@@ -2,6 +2,8 @@ import Link from "next/link";
 import Logo from "./logo";
 import { ShoppingBag, User } from "lucide-react";
 
+
+
 export function Header() {
     return (
         <header className="w-full shadow-lg">
@@ -11,8 +13,8 @@ export function Header() {
                 </Link>
 
                 <div className="flex gap-8">
-                    <Link href="/cart" className="flex items-center gap-3"><ShoppingBag className="text-primary" />Carrinho</Link>
-                    <Link href="/#" className="flex items-center gap-3"><User className="text-primary" />Entrar</Link>
+                    <Link href="/cart" className="flex items-center gap-3 hover:underline hover:underline-offset-4"><ShoppingBag className="text-primary" />Carrinho</Link>
+                    <Link href="/#" className="flex items-center gap-3 hover:underline hover:underline-offset-4"><User className="text-primary" />Entrar</Link>
                 </div>
             </div>
         </header>

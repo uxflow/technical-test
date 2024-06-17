@@ -1,10 +1,149 @@
+'use client'
+import { Checkbox } from "@/components/checkbox";
+import { Header } from "@/components/header";
+import { Input } from "@/components/input";
+import { ListProduct } from "@/components/list-product";
+import MultiRangeSlider from "@/components/multi-range/multi-range-slider";
+import { Search } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+interface ProductProps {
+  id: number;
+  title: string;
+  body: string;
+  price: number;
+  category: string;
+}
 
 export default function Home() {
+  const [listProduct, setListProduct] = useState<ProductProps[]>([]);
+
+  useEffect(() => {
+    async function getProducts() {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+        if (!response.ok) {
+          throw new Error('Erro ao carregar os produtos');
+        }
+
+        const data = await response.json();
+        const firstTenProducts = data.slice(0, 10).map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          body: item.body,
+          price: parseFloat((Math.random() * 500).toFixed(2)),
+          category: getRandomCategory(),
+        }));
+
+        setListProduct(firstTenProducts);
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    }
+
+    getProducts();
+  }, []);
+
+
+  const filteredProductsAll = listProduct.filter(product =>
+
+    product.title.toLowerCase()
+  );
+
+  const getRandomCategory = (): string => {
+    const categories = ['Botas', 'Chinelos', 'Chuteiras', 'Sandálias', 'Tênis'];
+    const randomIndex = Math.floor(Math.random() * categories.length);
+    return categories[randomIndex];
+  };
+
+  const addToCart = (productId: number) => {
+    console.log(productId)
+  };
 
   return (
-    <main className="w-full max-w-6xl flex flex-col h-screen">
-      <h1>Olá mundo</h1>
+    <main className="w-full flex flex-col bg-white">
+      <Header />
+      <section className="flex h-80 justify-center">
+        <div className="flex w-full justify-center items-center bg-primary">
+          <h1 className="text-white text-5xl font-semibold select-none">
+            Estilo e conforto <br /> Para os seus pés
+          </h1>
+        </div>
+        <Image
+          src="/model.png"
+          width={720}
+          height={320}
+          alt="Imagem com o fundo laranjado e com um Tenis preto com o solado branco"
+          className="object-cover hidden md:block md:w-1/2"
+        />
+      </section>
 
+      <section className="flex flex-col justify-between p-5 w-full max-w-7xl mx-auto">
+        <div className="flex w-full justify-between items-center mt-4">
+          <h2 className="font-semibold text-xl">
+            Itens encontrados
+          </h2>
+          <div className="w-96">
+            <Input
+              placeholder="Pesquisar"
+              icon={<Search />}
+            />
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col md:flex-row">
+          <div className="flex md:flex-col gap-4">
+            <div className="bg-gray-200 w-72 p-4 rounded-lg">
+              <h4>Categorias</h4>
+              <Input
+                placeholder="Pesquisar"
+                icon={<Search />}
+              />
+
+              <nav className="flex flex-col gap-2 mt-2">
+                <Checkbox
+                  label="test"
+                  checked={true}
+                  onChange={() => { }}
+                />
+              </nav>
+            </div>
+            <div className="bg-gray-200 w-72 p-4 rounded-lg">
+              <h4>Preço</h4>
+              <MultiRangeSlider
+                min={0}
+                max={500}
+                onChange={() => { }}
+              />
+              <div className="flex gap-4">
+                <p className="w-full bg-gray-300 rounded-t-lg py-2 pl-4 text-sm">Minimo</p>
+                <p className="w-full bg-gray-300 rounded-t-lg py-2 pl-4 text-sm">Maximo</p>
+              </div>
+              <div className="flex gap-4">
+                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ 0</p>
+                <p className="w-full bg-gray-300 rounded-b-lg py-2 pl-4 text-sm">R$ 500</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:ml-4 m-4 mx-auto">
+            {
+              filteredProductsAll.map((product) => (
+                <ListProduct
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  body={product.body}
+                  category={product.category}
+                  onClick={() => addToCart(product.id)}
+                  id={product.id.toString()}
+                />
+              ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
