@@ -19,6 +19,8 @@ interface ProductProps {
 export default function Home() {
   const [listProduct, setListProduct] = useState<ProductProps[]>([]);
 
+  const [title, setTitle] = useState('')
+
   useEffect(() => {
     async function getProducts() {
       try {
@@ -49,7 +51,7 @@ export default function Home() {
 
   const filteredProductsAll = listProduct.filter(product =>
 
-    product.title.toLowerCase()
+    product.title.toLowerCase().includes(title.toLowerCase())
   );
 
   const getRandomCategory = (): string => {
@@ -87,6 +89,8 @@ export default function Home() {
           </h2>
           <div className="w-96">
             <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="Pesquisar"
               icon={<Search />}
             />
